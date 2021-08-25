@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/quotile/static/css/main.aea7ce59.chunk.css",
+    "main.js": "/quotile/static/js/main.6eba96e1.chunk.js",
+    "main.js.map": "/quotile/static/js/main.6eba96e1.chunk.js.map",
+    "runtime-main.js": "/quotile/static/js/runtime-main.91d72a58.js",
+    "runtime-main.js.map": "/quotile/static/js/runtime-main.91d72a58.js.map",
+    "static/css/2.97503911.chunk.css": "/quotile/static/css/2.97503911.chunk.css",
+    "static/js/2.ceb60d5c.chunk.js": "/quotile/static/js/2.ceb60d5c.chunk.js",
+    "static/js/2.ceb60d5c.chunk.js.map": "/quotile/static/js/2.ceb60d5c.chunk.js.map",
+    "index.html": "/quotile/index.html",
+    "static/css/2.97503911.chunk.css.map": "/quotile/static/css/2.97503911.chunk.css.map",
+    "static/css/main.aea7ce59.chunk.css.map": "/quotile/static/css/main.aea7ce59.chunk.css.map",
+    "static/js/2.ceb60d5c.chunk.js.LICENSE.txt": "/quotile/static/js/2.ceb60d5c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.91d72a58.js",
+    "static/css/2.97503911.chunk.css",
+    "static/js/2.ceb60d5c.chunk.js",
+    "static/css/main.aea7ce59.chunk.css",
+    "static/js/main.6eba96e1.chunk.js"
+  ]
+}
