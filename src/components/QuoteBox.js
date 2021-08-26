@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
 import { useDoubleTap } from 'use-double-tap'; // https://github.com/minwork/use-double-tap
-function QuoteBox({ quote, generate }) {
+function QuoteBox({ generate }) {
     
     const dblTap = useDoubleTap(()=>generate());
 
@@ -9,7 +8,7 @@ function QuoteBox({ quote, generate }) {
             <div id="quote-box">
                 <p id="watermark">QUOTILE</p>
                 <p id="text"></p>
-                <p id="author"></p>
+                <p id="author">...</p>
             </div>
         </div>
     )
