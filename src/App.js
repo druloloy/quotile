@@ -10,7 +10,7 @@ import Controls from './components/Controls'
 
 import $ from 'jquery';
 import axios from 'axios';
-import { ToastContainer } from 'react-toastify';
+
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -127,19 +127,6 @@ const API_URL = `http://quotable.io/quotes?limit=150?`;
       
       <QuoteBox generate={generateRandomQuote}/>
       <Controls quote={currQuote}/>
-  
-      <ToastContainer
-      position="top-center"
-      autoClose={3000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      closeButton="false"
-      />
     </div>
     
   )

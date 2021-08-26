@@ -1,5 +1,6 @@
 import DomToImage from 'dom-to-image';
 import * as FI from 'react-icons/fi'
+import { ToastContainer } from 'react-toastify';
 import { toast } from 'react-toastify';
 import ReactTooltip from 'react-tooltip';
 function Controls({ quote }) {
@@ -15,17 +16,17 @@ function Controls({ quote }) {
     }
 
     function save(e){
-        e.preventDefault();
 
         let node = document.querySelector(".main-frame");
-        let filter = (n)=>n.id!=="controls-container";
+        let filter = (n)=>n.id!=="controls-container" && n.className!=="info";
 
 
         DomToImage.toPng(node, {quality:1,
             filter, 
             bgcolor:"#fefefe",
             width: 720,
-            height: 720,})
+            height: 720,
+            style: node})
                 .then(dataUrl=>{
                     let link = document.createElement('a');
                     link.download = 'quote.png';
@@ -37,17 +38,14 @@ function Controls({ quote }) {
                 })
     }
 
-    function copy(e){
-        e.preventDefault();
+    function copy(){
 
         const text = `"${quote?.content}" —${quote?.author}`;
         navigator.clipboard.writeText(text).then(_=>{
             TOAST.success("Copied to clipboard!");
-        })
-        .catch(e=>{
+        }, ()=>{
             TOAST.failed("Error occured while copying to clipboard.");
-        });
-        
+        });        
     }
 
     return (    
@@ -69,6 +67,19 @@ function Controls({ quote }) {
                 <FI.FiInfo id="info" /> 
                 <p>Double tap the quote <FI.FiSquare/> to generate new quote.</p>
             </div>
+            <ToastContainer
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                closeButton="false"
+                pauseOnFocusLoss={false}
+                />
         </div>
     )
 }
