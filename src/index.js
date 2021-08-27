@@ -7,11 +7,10 @@ import '../src/scss/Main.scss';
 function redirectHTTPS(){
   const protocol = window.location.protocol;
   const hostname = window.location.hostname;
-
-  console.log(protocol, typeof protocol, hostname, typeof hostname);
-  if(protocol!=="https:") window.location.assign('https://'+hostname);
-  else if(hostname==="localhost") console.log("DEVELOPMENT MODE") // dev mode
-  else window.location.assign('https://'+hostname
+  
+  if(hostname==="localhost") console.log("DEVELOPMENT MODE") // dev mode
+  else if(protocol!=="https:") window.location.assign('https://'+hostname); // prod mode
+  else window.location.assign('https://'+hostname); // prod mode
 }
 window.addEventListener('load', redirectHTTPS);
 
