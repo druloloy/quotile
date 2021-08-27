@@ -5,12 +5,11 @@ import '../src/scss/Main.scss';
 
 // Redirect the page to much secured protocol on page load
 function redirectHTTPS(){
-  const protocol = window.location.protocol;
-  const domain = window.location.domain;
-
-  console.log(protocol, typeof protocol, domain, typeof domain);
-  if(protocol!=="https:" && domain!==undefined) window.location = 'https://'+ domain;
-  else console.log("DEVELOPMENT MODE") // dev mode
+  const hostname = window.location.hostname;
+  if(hostname==="localhost") console.log("DEVELOPMENT MODE") // dev mode
+  else{
+    window.location.assign('https://'+hostname); // production mode
+  }
 }
 window.addEventListener('load', redirectHTTPS);
 
