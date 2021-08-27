@@ -8,7 +8,8 @@ function redirectHTTPS(){
   const protocol = window.location.protocol;
   const domain = window.location.domain;
 
-  if(protocol==="http:" && domain!==undefined) window.location = 'https://'+ domain;
+  console.log(protocol, typeof protocol, domain, typeof domain);
+  if(protocol!=="https:" && domain!==undefined) window.location = 'https://'+ domain;
   else console.log("DEVELOPMENT MODE") // dev mode
 }
 window.addEventListener('load', redirectHTTPS);
