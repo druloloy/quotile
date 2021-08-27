@@ -10,7 +10,7 @@ function redirectHTTPS(){
   
   if(hostname==="localhost") console.log("DEVELOPMENT MODE") // dev mode
   else if(protocol!=="https:") window.location.assign('https://'+hostname); // prod mode
-  else window.location.assign('https://'+hostname); // prod mode
+
 }
 window.addEventListener('load', redirectHTTPS);
 
