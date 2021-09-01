@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import '../src/scss/Main.scss';
 
-// Redirect the page to much secured protocol on page load
+// Redirect the page to much secured protocol on page load. This solution fixed security issues on Clipboard API.
 function redirectHTTPS(){
   const protocol = window.location.protocol;
   const hostname = window.location.hostname;

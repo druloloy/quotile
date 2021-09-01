@@ -1,9 +1,3 @@
-/**
- * Suggestions:
- * - Do the one quote fetch per click. Problem: May be slower if have poor connection. Deliverable within a day.
- * - Use Redux. Problem: Inappropriate / Overkill for a one page, one goal application. Longer development process.
-*/
-
 import React, { useState, useEffect, useCallback } from 'react';
 import QuoteBox from './components/QuoteBox';
 import Controls from './components/Controls'
@@ -14,7 +8,7 @@ import axios from 'axios';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-const API_URL = `http://quotable.io/quotes?limit=150?`;
+const API_URL = `http://quotable.io/quotes?limit=150`;
 
 
  function App() {
@@ -46,13 +40,13 @@ const API_URL = `http://quotable.io/quotes?limit=150?`;
     await axios.get(url, {cancelToken: source.token})
         .then(res=>res.data.results)
         .then(data=>{
+          setCurrentCount(data.length+currCount);
           setQuoteData(data); 
           setLoadState(true);
-          setCurrentCount(data.length+currCount);
+          
           source.cancel();
         })
         .catch(e=>{
-          console.log(e)
           source.cancel()
         });
   },[currCount]);
@@ -96,20 +90,23 @@ const API_URL = `http://quotable.io/quotes?limit=150?`;
 
 
 
+  // fetch onload
   useEffect(()=>{
     let axiosTokenSource = axios.CancelToken.source();
     if(!isLoaded){
+      // TEMPLATE
       $("#watermark").text("");
       $("#text").text("...");
       $("#author").text("");
-      fetch(API_URL, axiosTokenSource);
+      // END TEMPLATE
+      fetch(API_URL, axiosTokenSource); // FETCH
     }else{
       $("#watermark").text("QUOTILE");
     }
     return () => {
       axiosTokenSource.cancel();
     }
-  },[isLoaded, fetch]) // fetch onload
+  },[isLoaded, fetch]) 
 
 
   useEffect(() => {
@@ -118,13 +115,13 @@ const API_URL = `http://quotable.io/quotes?limit=150?`;
     }
   }, [currCount]); // reset if quoteData is empty
 
+  // Run this when data is loaded
   useEffect(() => {
     generateRandomQuote();
   }, [isLoaded])
   
   return (
     <div className="main-frame">
-      
       <QuoteBox generate={generateRandomQuote}/>
       <Controls quote={currQuote}/>
     </div>
